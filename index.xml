@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eric Jin</title>
+    <link>http://ericjin.com/</link>
+    <description>Recent content on Eric Jin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Apr 2019 12:16:10 +0800</lastBuildDate>
+    
+	<atom:link href="http://ericjin.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ARTS-WEEK7</title>
+      <link>http://ericjin.com/arts/arts-week7/</link>
+      <pubDate>Thu, 04 Apr 2019 12:16:10 +0800</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week7/</guid>
+      <description>Algorithm Description Given a 2D integer matrix M representing the gray scale of an image, you need to design a smoother to make the gray scale of each cell becomes the average gray scale (rounding down) of all the 8 surrounding cells and itself. If a cell has less than 8 surrounding cells, then use as many as you can.
+Example 1:
+Input: [[1,1,1], [1,0,1], [1,1,1]] Output: [[0, 0, 0], [0, 0, 0], [0, 0, 0]] Explanation: For the point (0,0), (0,2), (2,0), (2,2): floor(3/4) = floor(0.</description>
+    </item>
+    
+    <item>
+      <title>change /home to another partition</title>
+      <link>http://ericjin.com/change-home-to-another-partition/</link>
+      <pubDate>Thu, 28 Mar 2019 16:07:56 +0000</pubDate>
+      
+      <guid>http://ericjin.com/change-home-to-another-partition/</guid>
+      <description>记一次在 ubuntu 重新挂载 /home 到另外的分区的经历（/home 目录下已经存在文件）。
+  查看/home 目录的挂载情况
+$ df .   当然，现在已经是挂载在了另外一个分区下面了，之前我的/home 是挂载在根目录下&amp;rsquo;\&amp;lsquo;。
+ 之后是建立分区
+$ sudo fdisk /dev/sdb Welcome to fdisk (util-linux 2.31.1). Changes will remain in memory only, until you decide to write them. Be careful before using the write command. Command (m for help): m ## 可以列出所有的帮助选项  Generic ... F list free unpartitioned space l list known partition types n add a new partition ## 建立一个新的分区 p print the partition table .</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK6</title>
+      <link>http://ericjin.com/arts/arts-week6/</link>
+      <pubDate>Wed, 13 Mar 2019 16:17:55 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week6/</guid>
+      <description>Algorithm Description Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too. You need to find the shortest such subarray and output its length. Example 1: Input: [2, 6, 4, 8, 10, 9, 15] Output: 5 Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.</description>
+    </item>
+    
+    <item>
+      <title>剑指offer_面试题6</title>
+      <link>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%986/</link>
+      <pubDate>Mon, 18 Feb 2019 13:50:56 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%986/</guid>
+      <description>面试题6: 从尾到头打印链表  输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。
+ 第一种 链表反转
+//我们把链反转 public ArrayList&amp;lt;Integer&amp;gt; reverseList(ListNode head) { ArrayList&amp;lt;Integer&amp;gt; revList = new ArrayList&amp;lt;&amp;gt;(); if (head == null ) return revList; if (head.next == null) { revList.add(head.val); return revList; } ListNode prev = head; ListNode curr = head.next; ListNode next ; while (curr != null) { next = curr.next; curr.next = prev; prev = curr; curr = next; } head.next = null; head = prev; ListNode temp = head; while (temp !</description>
+    </item>
+    
+    <item>
+      <title>剑指offer_面试题4</title>
+      <link>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%984/</link>
+      <pubDate>Thu, 14 Feb 2019 17:51:53 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%984/</guid>
+      <description>面试题4: 二维数组中的查找  在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
+ 方法一 暴力解法，循环两层数组 时间复杂度： O(n^2)
+//方法1：遍历，这是最简单的最暴力的方法了 public boolean find(int target, int [][] array) { int xlen = array[0].length; int ylen = array.length; for (int i = 0; i &amp;lt; ylen; i++) { for (int j = 0; j &amp;lt; xlen; j++) { if (array[i][j] == target) return true; } } return false; }  方法二
+时间复杂度：最多就是遍历完行，遍历完列最后查找到或没找到，就是行与列的和，也就是： O(n)
+//思路2：选取右上角的一点进行查询，如果所选数比目标数大，则不在所选数的列，小，不在所选数的行 // 一步步的缩小范围 public boolean find_2(int target, int [][] array) { int xlen = array[0].</description>
+    </item>
+    
+    <item>
+      <title>剑指offer_面试题3</title>
+      <link>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%983/</link>
+      <pubDate>Wed, 13 Feb 2019 10:23:53 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%983/</guid>
+      <description>面试题3_第一题: 找出数组中重复的数字  在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。
+ 三种方法解答：
+public class DuplicateInArray { // 思路1：排序，排序后查找数组中是否重复很简单了。 // 时间复杂度时nlog(n) public static int solution(int[] nums) { if (nums == null || nums.length == 0) return -1; int len = nums.length; for (int i = 0; i &amp;lt; len; i++) { if (nums[i] &amp;lt; 0 || nums[i] &amp;gt; len - 1) return -1; } Arrays.sort(nums); for (int i=0; i &amp;lt; len - 1; i++) { if (nums[i] == nums[i+1]) return nums[i]; } return -1; } // 思路2：利用哈希表，加入时看是否存在，存在则返回 // 时间复杂度时 n ,空间复杂度是 n public static int solution2(int[] nums) { HashSet&amp;lt;Integer&amp;gt; set = new HashSet&amp;lt;&amp;gt;(); for (int num : nums) { if (!</description>
+    </item>
+    
+    <item>
+      <title>《图解HTTP》读书笔记</title>
+      <link>http://ericjin.com/%E5%9B%BE%E8%A7%A3http%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 08 Feb 2019 15:17:29 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E5%9B%BE%E8%A7%A3http%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>《图解HTTP》读书笔记 一、Web及网络基础 1.1 HTTP的诞生 3项WWW的构建技术：
+ HTML(HyperText Markup Language，超文本标记语言) 作为页面的文本标记语言
+ HTTP(HyperText Transfer Protocol，超文本传输协议) 作为文档传递的协议
+ URL(Uniform Resource Locator，统一资源定位符) 作为文档所在地的地址
+  1.2 网络基础协议 TCP/IP 计算机与网络设备要相互通信，双方就必须基于相同的方法。
+1.2.1 TCP/IP的分层管理 TCP/IP 协议族按层次分别分为以下 4 层：应用层、传输层、网络层和数据链路层。
+ 好处：每层做着自己的事情，不需要弄清楚上下层是如何运转的（封装），某层需要改变也可以单独修改，只要按照各层之间的接口封装即可
+  应用层：决定了向用户提供应用服务时通信的活动。FTP（File Transfer Protocol，文件传输协议）和 DNS（Domain Name System，域名系统）服务就是其中两类。HTTP也是应用层的。 传输层：传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。有两个性质不同的协议：TCP 和 UDP。 网络层：用来处理在网络上流动的数据包。 链路层：用来处理连接网络的硬件部分。  发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层时会把对应的首部消去。这叫做封装。
+​ 1.3 与HTTP关系密切的协议：IP、TCP、DNS 1.3.1 负责传输的IP协议 IP协议处于网络层，作用是把各种数据包传送给对方。需要确定IP地址和MAC地址。
+IP地址指明了节点被分配到的地址，MAC地址指网卡的固定地址。IP地址可以和MAC地址配对。
+ARP协议：凭借MAC地址进行通信 IP通信依赖MAC地址，网络上，通信的双方要经过多台计算机和网络设备中转才能连接到对方。在中转时，会利用下一站中转设备的MAC地址来搜索下一个目标。这时，就用到了ARP协议——根据通信双方的IP地址就可以反查出对应的MAC地址。
+ 中转过程中，计算机和路由器等网络设备只能获取很粗略的传输路线，称为路由选择。
+ 1.3.2 确保可靠性的TCP协议 TCP处于传输层，提供可靠的字节流服务。
+ 字节流服务：为了方便传输，将大块数据分割成以报文段为单位的数据包进行管理。
+ TCP协议为了更容易传送大数据才把数据分割，而且TCP协议能够确认数据最终是否送达对方。
+确保数据能到达目标 TCP采用三次握手策略。TCP协议把数据送出去后，不会对传送后的情况置之不理，一定会向对方确认是否成功送达。握手过程中使用了TCP的标志：SYN和ACK。</description>
+    </item>
+    
+    <item>
+      <title>新年快乐</title>
+      <link>http://ericjin.com/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/</link>
+      <pubDate>Tue, 05 Feb 2019 00:02:56 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/</guid>
+      <description>新年快乐。
+小总结 去年工作之余补了自己 java方面的基础，看了《core java》。《Thingking in Java》看了大概一半。自己比较满足的是，读的都是英文版的，虽然读的有点慢。java 是安身立命之本，还要继续加强。java 方面的书单还有《Effective java》，以及并发的经典《java并发编程实战》，在之后还要更加深入理解java虚拟机，这方面就是《Java 性能权威指南》，在了解了并发以后，要了解一下如何优化 java 性能，然后是《深入理解Java虚拟机》。这几本书需要在后两年好好研读，毕竟 java 才是目前自己需要深入的语言。
+在这之余，今年还涉猎了python、C、golang,都读了一本入门的书籍，也是瞎学了一同，了解了一下。然后在自己的工作相关上，对 kafka有了一些了解，读了《redis in action》这本书，了解了一下redis。然后我们常用的spring,这个虽然专门根据耗子书的推荐，读了《spring 实战》和《spring boot 实战》。学习spring 必备的入门书了，然后就是它们的官方文档。spring 的一本《精通spring4.x》还未读。这都是日后需要读的。
+小展望 今年，开年希望能够找到一个更好的平台进入，更深入和全面的提升自己的技术，跟着耗子书的程序员练级攻略，慢慢看书。自己在基础方面还需要强化。后端的路，走的越久，要学的东西就越多啊。
+自己有时候还是有些急了，这里学一点那里学一点。其实更应该在自己专长上面不断下功夫，然后博一点就好了！
+也是新年唠叨几句。技术人，技术博客，还是要记录技术，记录成长。</description>
+    </item>
+    
+    <item>
+      <title>把blog部署VPS上的各种坑</title>
+      <link>http://ericjin.com/%E6%8A%8Ablog%E9%83%A8%E7%BD%B2%E5%88%B0vps%E4%B8%8A%E7%9A%84%E5%90%84%E7%A7%8D%E5%9D%91/</link>
+      <pubDate>Thu, 31 Jan 2019 08:57:41 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E6%8A%8Ablog%E9%83%A8%E7%BD%B2%E5%88%B0vps%E4%B8%8A%E7%9A%84%E5%90%84%E7%A7%8D%E5%9D%91/</guid>
+      <description>缘起 最近刚好手上有 vps,本来 blog 是自己放在 gitpage 上的，用的是 jekyll ,不过 jekyll 不好再本机windows上安装，需要安装 ruby 的支持，而 ruby 在windows上又特别难弄。以前弄过一次，不过前段时间重装系统之后，就不想继续把 ruby 装到windows上，麻烦。
+刚好了解到 hexo ,知道它只需要安装 node.js, 而 node.js 在windows上还是支持的特别好的，只需要在 node.js 官网 下载安装包下载即可。
+hexo 也有很好的中文支持，可以很顺利的在本机上安装好 hexo。
+本机操作  环境: windows 10 64位
+需要安装: git、node.js
+ 1. 使用npm安装hexo 在本机执行：
+npm install -g hexo-cli  2. 初始化 blog hexo init blog cd blog npm install  本例以blog为初始化的文件夹名。可自行定义。 初始化以后，主要配置信息在 _config.yml里面，这个可以去hexo 进行详细了解。
+现在来说本机操作已经完成了。让我们先在VPS上操作一番。
+VPS操作  假设你已经有了VPS服务器。我是买的 vultr，没有可以自己去购买一个。
+国内：阿里云、腾讯云;国外：vultr、digitalocean
+环境：Ubuntu 18.</description>
+    </item>
+    
+    <item>
+      <title>异常丢失</title>
+      <link>http://ericjin.com/tij%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
+      <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tij%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
+      <description>Error handing with Exceptions  java 中的异常处理有两种情况会使异常丢失
+1. try-finnaly 使用
+ public class LostMessage { public static void main(String[] args) { try { LostMessage lm = new LostMessage(); try { lm.f(); //ImportantException被抛出，直接进入finally } finally { lm.dispose(); //finally 中抛出HohunException,ImportantException 异常信息会丢失 } } catch (Exception e) { e.printStackTrace(); } } void f() throws ImportantException { throw new ImportantException(); } void dispose() throws HohunException { throw new HohunException(); } }  try 后面直接跟 finally,如果 finally 中抛出另一个异常，try 中抛出的异常就丢失了。</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK 5</title>
+      <link>http://ericjin.com/arts/arts-week5/</link>
+      <pubDate>Sat, 08 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week5/</guid>
+      <description>最近算法题倒是一天有写一道，不过总是无法抓住很好的review 和tip 来写,所以感觉写ARTS的时间总是耽搁又耽搁，比一起的间隔时间也长了好几天。
+ Algorithm LeetCode Count and Say,简单。 这题算是比较印象深刻的一题，最开始这一题的题目都没有看清楚，不知道这是什么意思。后面才明白，是后一个数去say 前一个数，得到后一个数之后继续。这样其实就可以算是一种递归了。因为我们知道了递归因子，和边界点。
+Description The count-and-say sequence is the sequence of integers with the first five terms as following:
+1. 1 2. 11 3. 21 4. 1211 5. 111221  1 is read off as &amp;quot;one 1&amp;quot; or 11. 11 is read off as &amp;quot;two 1s&amp;quot; or 21. 21 is read off as &amp;quot;one 2, then one 1&amp;quot; or 1211.</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK 4</title>
+      <link>http://ericjin.com/arts/arts-week4/</link>
+      <pubDate>Mon, 27 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week4/</guid>
+      <description>Algorithm LeetCode 第26题,简单。 最近一周没有太多时间写，还是自己的时间规划的不够好。要谨记于心。
+Description Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length. Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory. Example 1:
+Given nums = **[1,1,2]**, Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK 3</title>
+      <link>http://ericjin.com/arts/arts-week3/</link>
+      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week3/</guid>
+      <description>Algorithm Leetcode 第20题,简单。 决定先按照难易程度开始写leetcode,尽量能够每天或者两天写一道题目。一周记录一道题目到ARTS上面来。
+Given a string containing just the characters &#39;(&#39;, &#39;)&#39;, &#39;{&#39;, &#39;}&#39;, &#39;[&#39; and &#39;]&#39;, determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets. Open brackets must be closed in the correct order. Note that an empty string is also considered valid. Example 1: Input: &amp;quot;()&amp;quot; Output: true Example 2: Input: &amp;quot;()[]{}&amp;quot; Output: true Example 3: Input: &amp;quot;(]&amp;quot; Output: false Example 4: Input: &amp;quot;([)]&amp;quot; Output: false Example 5: Input: &amp;quot;{[]}&amp;quot; Output: true  这题在旁边的related Topics 上面显示的是String、stack，所以可以猜测到本题的思路应该是从stack入手了。stack的特点是FILO(First in Last Out)，先进后出。</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK 2</title>
+      <link>http://ericjin.com/arts/arts-week2/</link>
+      <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week2/</guid>
+      <description>Algorithm LeeCode 的第三题，中等难度。
+Given a string, find the length of the longest substring without repeating characters. Examples: Given &amp;quot;abcabcbb&amp;quot;, the answer is &amp;quot;abc&amp;quot;, which the length is 3. Given &amp;quot;bbbbb&amp;quot;, the answer is &amp;quot;b&amp;quot;, with the length of 1. Given &amp;quot;pwwkew&amp;quot;, the answer is &amp;quot;wke&amp;quot;, with the length of 3. Note that the answer must be a substring, &amp;quot;pwke&amp;quot; is a subsequence and not a substring.  此题寻找字符串中最长的不重复字符子串。
+起始思路是找每一个子串，然后每个子串没有重复字符。这个思路确实是最直接，最暴力的，但是也是最没有算法和数据结构的。</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK 1</title>
+      <link>http://ericjin.com/arts/arts-week1/</link>
+      <pubDate>Thu, 09 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week1/</guid>
+      <description>Algorithm LeetCode 的第一题，比较简单。就是给一个数组，一个目标结果，返回数组中两个相加和为目标数的索引。
+Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].  因为没有做过算法题，所以刚开始的思路就是跟简单排序一样，拿出第一个数，然后轮询后面的数，并相加，看它们的和是否等于目标数，不等于就拿出第二个数往后，等于就返回索引。</description>
+    </item>
+    
+  </channel>
+</rss>

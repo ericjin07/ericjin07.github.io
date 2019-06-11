@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ARTS-WEEK6 | Eric Jin</title>
+    <meta property="og:title" content="ARTS-WEEK6 - Eric Jin">
+    <meta property="og:type" content="article">
+    
+    <meta property="article:published_time" content="2019-03-13T16:17:55&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content="2019-03-13T16:17:55&#43;08:00">
+    
+    <meta name="Keywords" content="golang,go语言,go语言笔记,Eric Jin,java,博客,项目管理,python,软件架构,">
+    <meta name="description" content="ARTS-WEEK6">
+    
+    <meta name="author" content="Eric Jin">
+    <meta property="og:url" content="http://ericjin.com/arts/arts-week6/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    <link rel="stylesheet" href="/css/reward.css">
+    <link rel="stylesheet" href="/css/prism.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+    <link rel="stylesheet" href="/css/widget.css">
+    <link rel="stylesheet" href="/css/rocket.css">
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    
+
+
+    
+    
+</head>
+
+<body>
+    
+
+
+
+    
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('http://ericjin.com/img/home-bg-o.jpg')
+    }
+</style>
+<header class="intro-header">
+    
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        
+                        <div class="tags">
+                            
+                            <a href="http://ericjin.com/tags/arts">ARTS</a>
+                            
+                        </div>
+                        
+                        <h1>ARTS-WEEK6</h1>
+                        
+                        <h2 class="subheading">enum singleton</h2>
+                        
+                        <span class="meta">
+                            Posted by Eric Jin on
+                            2019-03-03
+                        </span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://ericjin.com/">Eric Jin</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="http://ericjin.com/">Home</a>
+                    </li>
+
+                    
+                    <li>
+                        <a href="http://ericjin.com/archives/" title="ARCHIVES">ARCHIVES</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/tags/" title="TAGS">TAGS</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/categories/" title="CATEGORIES">CATEGORIES</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/about/" title="ABOUT">ABOUT</a>
+                    </li>
+                    
+
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            
+            $navbar.className = " ";
+            
+            setTimeout(function () {
+                
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        } else {
+            
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    
+    
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                    col-lg-8 col-lg-offset-2
+                    col-md-10 col-md-offset-1
+                    post-container">
+                
+
+<h2 id="algorithm">Algorithm</h2>
+
+<h4 id="description">Description</h4>
+
+<pre><code>Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too.
+
+You need to find the shortest such subarray and output its length.
+
+Example 1:
+Input: [2, 6, 4, 8, 10, 9, 15]
+Output: 5
+Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
+Note:
+Then length of the input array is in range [1, 10,000].
+The input array may contain duplicates, so ascending order here means &lt;=.
+</code></pre>
+
+<h4 id="solution">solution</h4>
+
+<blockquote>
+<p>思路一：
+给数组做一个备份，然后排序数组。遍历数组，如果原数组和排序的新数组元素不等，这个位置就是需要排序的点，记录下来。</p>
+</blockquote>
+
+<pre><code class="language-java">public int findUnsortedSubarray(int[] nums) {
+        if (nums == null || nums.length &lt;= 0)
+            return 0;
+        int len = nums.length;
+        int start = len;
+        int end = 0;
+        //备份
+        int[] cnums = nums.clone();
+        Arrays.sort(cnums);
+        for (int i = 0; i &lt; len; i++) {
+            //不同则比较最小最大
+            if (nums[i] != cnums[i]){
+                start = Math.min(i,start);
+                end = Math.max(i,end);
+            }
+        }
+        return (end - start) &gt;= 0 ? end - start + 1 : 0;
+    }
+</code></pre>
+
+<blockquote>
+<p>思路二：
+用栈，遍历数组，如果后一个数比前一个大，就把元素当前的下标放入栈中，一旦遇到后一个比前一个小的，就把栈最上面的索引取出来。
+跟当前元素对比，直到栈最上面的索引元素比遍历元素大。从栈中取出的元素就是需要排序的正确位置。
+相反，最大的从后面遍历元素。</p>
+</blockquote>
+
+<pre><code class="language-java">public int findUnsortedSubarray_stack(int[] nums) {
+        if (nums == null || nums.length &lt;= 0)
+            return 0;
+        LinkedList&lt;Integer&gt; stack = new LinkedList&lt;&gt;();
+        int len = nums.length;
+        int start = len,end = 0;
+        for (int i = 0; i &lt; len; i++) {
+            //栈不为空，且栈顶的索引元素大于当前元素
+            while (!stack.isEmpty() &amp;&amp; nums[stack.peek()] &gt; nums[i])
+                start = Math.min(start,stack.pop());
+            stack.push(i);
+        }
+        stack.clear();
+        for (int i = len - 1; i &gt;=0 ; i--) {
+            while (!stack.isEmpty() &amp;&amp; nums[stack.peek()] &lt; nums[i])
+                end = Math.max(end,stack.pop());
+            stack.push(i);
+        }
+        return (end - start) &gt; 0 ? end - start + 1 : 0;
+    }
+</code></pre>
+
+<blockquote>
+<p>思路三：找到非递增或递减中的最小最大值
+然后与数组元素比较，一旦比最小比遍历元素小，就放在此处</p>
+</blockquote>
+
+<pre><code class="language-java">public int findUnsortedSubarray(int[] nums) {
+        if (nums == null || nums.length &lt;= 0)
+            return 0;
+        int len = nums.length;
+        int min = Integer.MAX_VALUE,max = Integer.MIN_VALUE;
+        //当后一个小于前一个时，比较得出最小的元素，是为之后界定最小边界
+        for (int i = 1; i &lt; len; i++) {
+            if (nums[i - 1] &gt; nums[i])
+                min = Math.min(min,nums[i]);
+        }
+        //当前一个元素大于后一个元素，比较得出最大元素，是为之后界定最大边界
+        for (int i = len - 2; i &gt;= 0; i--) {
+            if (nums[i] &gt; nums[i+1])
+                max = Math.max(max,nums[i]);
+        }
+        int l,r;
+        for (l = 0; l &lt; len; l++)
+            if (min &lt; nums[l])
+                break;
+        for (r  = len - 1; r &gt;= 0 ; r--)
+            if (max &gt; nums[r])
+                break;
+        return (r - l) &gt; 0 ? (r - l + 1) : 0;
+
+    }
+</code></pre>
+
+<h2 id="review">Review</h2>
+
+<p>看源码的时候看到HTTP状态码301(permanent) 和 302(temporary) 有不同区别的对待，一时忘记这两者重定向的内含。找到了这篇文章 <a href="https://www.hochmanconsultants.com/301-vs-302-redirect/">302 Redirect vs. 301 Redirect: Which is Better?</a>，这篇文章说了301 和 302 的优劣。</p>
+
+<p>文章说了，这两种重定向对于用户来说，其实是一样的，但是他们的区别是搜索引擎所关注的。</p>
+
+<p>301 的重定向是指永久的指向了新的地址，302 的重定向是暂时的指向。搜索引擎需要通过这个状态码去弄清楚是保存旧页面地址呢，还是直接用新页面替换旧页面地址。</p>
+
+<p>不过文中说Google 意识到很多人错误的使用了302，其实他们想要的是永久的重定向。所以Google 会弄清楚你究竟想要用的是301还是302。</p>
+
+<p>但是其他搜索引擎可能做不到，如果301被用作了302，那么搜索引擎会继续索引旧地址，把新地址忽视，作为了一个重复的地址。这种时候就会影响到搜索排序。</p>
+
+<blockquote>
+<p>Google spokespeople have said that they will treat a 302 as a 301 if they think the webmaster has made an error, but why take a chance, and what about other search engines?</p>
+</blockquote>
+
+<h2 id="tip">Tip</h2>
+
+<p>昨天看到《Effective Java》，看到单例模式。这个在大家的印象中有各种懒汉模式，饿汉模式，然后又分线程安全与不安全。</p>
+
+<p>但是看了书才知道还有一个枚举的单例模式，还是最推荐最简单有效的。</p>
+
+<p>正常只是私有化构造方法，公开一个静态方法获取单例对象。</p>
+
+<p>写一个最和规矩的单例模式：</p>
+
+<pre><code class="language-java">public class Singleton implements Serializable {
+    private static Singleton singleton;
+    private String id;
+
+    private Singleton(){id = &quot;test&quot;;}
+
+    public static Singleton getInstance(){
+        if (singleton == null) {
+            synchronized (Singleton.class) {
+                if (singleton == null){
+                    singleton = new Singleton();
+                }
+            }
+        }
+        return singleton;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    private Object readResolve() throws ObjectStreamException {
+        return singleton;
+    }
+}
+</code></pre>
+
+<ol>
+<li>加了锁保证多线程下只实例一个。加了double check。</li>
+<li>在序列化反序列化的时候重写<code>readResolve()</code> 方法，这样能保证序列化反序列化依旧为一个实例。</li>
+</ol>
+
+<p>但是即使这样，如果利用反射进行处理，依旧可以获取到多个实例</p>
+
+<pre><code class="language-java">public class SingletonTest {
+    static String file = &quot;C:\\Users\\lanse\\Desktop\\SINGLETON.txt&quot;;
+    public static void main(String[] args) throws Exception{
+        Singleton s = Singleton.getInstance();
+        Singleton s2 = Singleton.getInstance();
+        System.out.println(&quot;静态方法获取实例是否一致：&quot; + (s == s2));
+
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+        oos.writeObject(s);
+        oos.flush();
+        System.out.println(&quot;write finish&quot;);
+
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+        Singleton reS = (Singleton) ois.readObject();
+        System.out.println(&quot;序列化后的实例一致么：&quot; + (reS == s));
+
+//        测试反射：：：
+        Constructor&lt;Singleton&gt; cons = Singleton.class.getDeclaredConstructor();
+        cons.setAccessible(true);
+        Singleton consInstance = cons.newInstance();
+        System.out.println(&quot;反射生成的实例是否一致：&quot; + (consInstance == s));
+    }
+}
+</code></pre>
+
+<p><strong>output</strong></p>
+
+<pre><code class="language-text">静态方法获取实例是否一致：true
+write finish
+序列化后的实例一致么：true
+反射生成的实例是否一致：false
+</code></pre>
+
+<h4 id="枚举实现单例">枚举实现单例</h4>
+
+<pre><code class="language-java">public enum SingleEnum {
+    INSTANCE 
+}
+</code></pre>
+
+<p>这种方式实现的单例，序列化反序列化，线程安全，甚至反射的攻击都被杜绝了。来看源码：</p>
+
+<p>这是 反射<code>newInstance()</code>方法的源码</p>
+
+<pre><code class="language-java">public T newInstance(Object ... initargs)
+        ...
+        if ((clazz.getModifiers() &amp; Modifier.ENUM) != 0)
+            throw new IllegalArgumentException(&quot;Cannot reflectively create enum objects&quot;);
+        ConstructorAccessor ca = constructorAccessor;   // read volatile
+        ...
+    }
+</code></pre>
+
+<p>无法对枚举类型进行反射构造！！！</p>
+
+<h2 id="share">Share</h2>
+
+<p>学习Linux 的时候，你会感觉其实起步的命令行是最麻烦的，也是最难记的。命令还有那么多的参数，虽然你可以用<code>man command</code> 或者 <code>command --help</code> 来查找帮助手册，但是，帮助手册真的很不友好，对新手来说，没有什么比实例更能说明问题的了。就像学代码一样，直接把 <code>helloworld</code>展示出来，要比说一堆什么参数是什么意思要好的多。</p>
+
+<p>比如我经常忘记<code>tar</code>命令它具体的参数用法，如果我<code>man tar</code> 那一堆的命令我完全看懵逼。</p>
+
+<p><a href="https://linux.cn/article-3760-1.html">Cheat—— 给Linux初学者和管理员一个终极命令行&rdquo;备忘单&rdquo;</a></p>
+
+<p>这个，忘记具体使用的时候直接 <code>cheat tar</code></p>
+
+<pre><code>$ cheat tar
+# To extract an uncompressed archive:
+tar -xvf /path/to/foo.tar
+
+# To create an uncompressed archive:
+tar -cvf /path/to/foo.tar /path/to/foo/
+
+# To extract a .gz archive:
+tar -xzvf /path/to/foo.tgz
+
+# To create a .gz archive:
+tar -czvf /path/to/foo.tgz /path/to/foo/
+
+# To list the content of an .gz archive:
+tar -ztvf /path/to/foo.tgz
+
+# To extract a .bz2 archive:
+tar -xjvf /path/to/foo.tgz
+
+# To create a .bz2 archive:
+tar -cjvf /path/to/foo.tgz /path/to/foo/
+
+# To extract a .tar in specified Directory:
+tar -xvf /path/to/foo.tar -C /path/to/destination/
+
+# To list the content of an .bz2 archive:
+tar -jtvf /path/to/foo.tgz
+
+# To create a .gz archive and exclude all jpg,gif,... from the tgz
+tar czvf /path/to/foo.tgz --exclude=\*.{jpg,gif,png,wmv,flv,tar.gz,zip} /path/to/foo/
+
+# To use parallel (multi-threaded) implementation of compression algorithms:
+tar -z ... -&gt; tar -Ipigz ...
+tar -j ... -&gt; tar -Ipbzip2 ...
+tar -J ... -&gt; tar -Ipixz ...
+</code></pre>
+
+<p>有示例，友好。</p>
+
+<p>文中有<code>cheat</code>的详细介绍和安装指南。</p>
+
+                <hr>
+                
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%986/" data-toggle="tooltip" data-placement="top"
+                            title="剑指offer_面试题6">&larr; 剑指offer_面试题6</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="http://ericjin.com/change-home-to-another-partition/" data-toggle="tooltip" data-placement="top"
+                            title="change /home to another partition">change /home to another partition &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+
+
+
+
+
+<div class="post bg-white">
+  <script src="https://utteranc.es/client.js" repo="ericjin07.github.io"
+    issue-term="pathname" theme="github-light" crossorigin="anonymous"
+    async>
+    </script>
+</div>
+
+
+
+            </div>
+
+            
+            
+
+        </div>
+    </div>
+</article>
+
+    
+
+    
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+            
+            <li>
+                <a target="_blank" href="https://twitter.com/ericjin07">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+            
+            
+            <li>
+                <a target="_blank" href="https://www.zhihu.com/people/jin-zhi-bin">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa  fa-stack-1x fa-inverse">知</i>
+                    </span>
+                </a>
+            </li>
+            
+            
+            
+            
+            <li>
+                <a target="_blank" href="https://github.com/ericjin07">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+            
+            
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Eric Jin 2019
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="blank">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px"
+                        height="20px" src="https://ghbtns.com/github-btn.html?user=ericjin07&amp;repo=hexo-blog-sources&amp;type=star&amp;count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+    
+    (function () {
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [['$', '$']],
+            processEscapes: true
+        }
+    };
+</script>
+<script type="text/javascript" src="/js/prism.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js" async></script>
+<script type="text/javascript" src="/js/toc.js" async></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.nav.js"></script>
+<script type="text/javascript" src="/js/jquery.tagcloud.js"></script>
+<script type="text/javascript" src="/js/hux-blog.min.js" async></script>
+
+
+
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+
+
+<script>
+    
+    if ($('#tag_cloud').length !== 0) {
+        function load_tag() {
+            $.fn.tagcloud.defaults = {
+                
+                color: { start: '#bbbbee', end: '#0085a1' },
+            };
+            $('#tag_cloud a').tagcloud();
+        }
+        load_tag()
+    }
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ARTS-WEEK 4 | Eric Jin</title>
+    <meta property="og:title" content="ARTS-WEEK 4 - Eric Jin">
+    <meta property="og:type" content="article">
+    
+    <meta property="article:published_time" content="2018-08-27T00:00:00&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content="2018-08-27T00:00:00&#43;08:00">
+    
+    <meta name="Keywords" content="golang,go语言,go语言笔记,Eric Jin,java,博客,项目管理,python,软件架构,">
+    <meta name="description" content="ARTS-WEEK 4">
+    <meta name="author" content="Eric Jin">
+    
+    <meta property="og:url" content="http://ericjin.com/arts/arts-week4/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    <link rel="stylesheet" href="/css/reward.css">
+    <link rel="stylesheet" href="/css/prism.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+    <link rel="stylesheet" href="/css/widget.css">
+    <link rel="stylesheet" href="/css/rocket.css">
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    
+
+
+    
+    
+</head>
+
+<body>
+    
+
+
+
+    
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('http://ericjin.com/img/post-bg-light.jpeg')
+    }
+</style>
+<header class="intro-header">
+    
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        
+                        <div class="tags">
+                            
+                            <a href="http://ericjin.com/tags/arts">ARTS</a>
+                            
+                        </div>
+                        
+                        <h1>ARTS-WEEK 4</h1>
+                        
+                        <h2 class="subheading">some curl</h2>
+                        
+                        <span class="meta">
+                            Posted by Eric Jin on
+                            2018-08-08
+                        </span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://ericjin.com/">Eric Jin</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="http://ericjin.com/">Home</a>
+                    </li>
+
+                    
+                    <li>
+                        <a href="http://ericjin.com/archives/" title="ARCHIVES">ARCHIVES</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/tags/" title="TAGS">TAGS</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/categories/" title="CATEGORIES">CATEGORIES</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/about/" title="ABOUT">ABOUT</a>
+                    </li>
+                    
+
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            
+            $navbar.className = " ";
+            
+            setTimeout(function () {
+                
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        } else {
+            
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    
+    
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                    col-lg-8 col-lg-offset-2
+                    col-md-10 col-md-offset-1
+                    post-container">
+                
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>LeetCode <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/">第26题</a>,简单。
+最近一周没有太多时间写，还是自己的时间规划的不够好。要谨记于心。</p>
+
+<h5 id="description">Description</h5>
+
+<p>Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+<strong>Example 1:</strong></p>
+
+<pre><code>Given nums = **[1,1,2]**,
+
+Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.
+
+It doesn't matter what you leave beyond the returned length.
+</code></pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><code>Given nums = **[0,0,1,1,1,2,2,3,3,4]**,
+
+Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.
+
+It doesn't matter what values are set beyond the returned length.
+</code></pre>
+
+<p><strong>Clarification:</strong>
+Confused why the returned value is an integer but your answer is an array?
+Note that the input array is passed in by <strong>reference</strong>, which means modification to the input array will be known to the caller as well.
+Internally you can think of this:</p>
+
+<pre><code>// nums is passed in by reference. (i.e., without making a copy)
+int len = removeDuplicates(nums);
+
+// any modification to nums in your function would be known by the caller.
+// using the length returned by your function, it prints the first len elements.
+for (int i = 0; i &lt; len; i++) {
+    print(nums[i]);
+}
+</code></pre>
+
+<p>本题是要移除重复的元素，而且要在数组内部进行操作（<a href="https://en.wikipedia.org/wiki/In-place_algorithm">in-place</a>）,不能有另外的数据结构了。
+移除重复元素，返回不重复的元素个数。
+<strong>思路：</strong>
+用两个指针，一个指针（a）循环遍历，另一个指针（b）指着不重复元素。所有，遍历的时候，当 a 指针元素等于 b 指针元素的时候，a 指针后移，b不动；当 a 指针元素不等于 b 指针元素时（注意，此题传入的是排序后的数组，若未排序，肯定也是需要排序的），b 就可以往后移动一位，同时 b 元素此时等于 a 元素。以此循环遍历，最后b指针所在就是不重复元素的最后一个。也就有了不重复元素的长度。</p>
+
+<h5 id="solution">solution</h5>
+
+<pre><code class="language-java">public int removeDuplicates(int[] nums) {
+        int index = 1;
+        int comp = nums[0];
+        for (int i=1;i&lt;nums.length; i++) {
+           if (nums[i] == comp) {
+               continue;
+           }else {
+               comp = nums[i];
+               nums[index] = nums[i];
+           }
+        }
+        return index;
+    }
+</code></pre>
+
+<h5 id="test">test</h5>
+
+<pre><code class="language-java">    @Test
+    public void removeDuplicates() {
+        RemoveDuplicates solution = new RemoveDuplicates();
+        int[] nums;
+        nums = new int[]{1,1,2};
+        assertEquals(2,solution.removeDuplicates(nums));
+        nums = new int[]{0,0,1,1,1,2,2,3,3,4};
+        assertEquals(5,solution.removeDuplicates(nums));
+    }
+</code></pre>
+
+<h2 id="review">Review</h2>
+
+<p><a href="https://blog.codinghorror.com/to-serve-man-with-software/">To Serve Man, with Software</a><br />
+就像题目所说的，软件，是为了更好的服务人类，这大概就是顶级程序员能够有的境界了吧。
+&gt; Software is easy to change to make it better,and software can also encourage people to do better things and help others.</p>
+
+<blockquote>
+<p>And you know why I do it? I need that help, too. I get tired, angry, upset, emotional, cranky, irritable, frustrated and I need to be reminded from time to time to choose to be the better version of myself. I don&rsquo;t always succeed. But I want to. And I believe everyone else – for some reasonable statistical value of everyone else – fundamentally does, too.</p>
+</blockquote>
+
+<p>作者说他也都会忧郁，烦恼，生气，疲劳，因此我们需要时时谨记让自己成为更好的自己。
+这也是Stack Overflow 建立背后的哲学。它建立了一个社区，去帮助那些程序员们成为更好的程序员。如果有更多的人如此遵循这要的哲理，那么就能够服务更多的人。</p>
+
+<h2 id="tip">Tip</h2>
+
+<p>在用服务器调试接口的时候，发现<code>curl</code>这个的用法自己还是只会非常基础的。比如说：
+<code>curl https://www.lifewire.com/example-uses-of-the-linux-curl-command-4084144</code><br />
+这个直接会直接在终端显示网页情况。
+而如果加上<code>-o</code>或者<code>-O</code>,就可以把页面写入到文件之中去。<br />
+比分说：
+<code>curl -o curl_example.html https://www.lifewire.com/example-uses-of-the-linux-curl-command-4084144</code><br />
+文件就是<code>curl_example.html</code>。<br />
+如果是大写的<strong>O</strong>,就会用url后面一部分作为文件名。<br />
+<code>curl -O https://www.lifewire.com/example-uses-of-the-linux-curl-command-4084144</code><br />
+文件名就是：<code>example-uses-of-the-linux-curl-command-4084144</code>。
+当然也可以直接用linux 里面的流导向:<br />
+<code>curl https://www.lifewire.com/example-uses-of-the-linux-curl-command-4084144 &gt;test.html</code><br />
+无论那种，在down页面的时候，都会有下面的一些统计数据：<br />
+<img src="../img/post-arts4-1.png" alt="" /><br />
+多文件的话：<br />
+<code>curl -O URL1 -O URL2</code></p>
+
+<p>当遇到url 重定向问题的时候，简单的<code>curl</code>没办法追踪：</p>
+
+<pre><code>$ curl t.tt
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>这种<code>Moved</code>的问题只是简单的curl 没办法读取，需要用到<code>-L</code>,它会跟踪Http里面的header中的location进行重定向。</p>
+
+<pre><code>curl -v t.tt
+* About to connect() to t.tt port 80 (#0)
+*   Trying 140.143.179.117...
+* Connected to t.tt (140.143.179.117) port 80 (#0)
+&gt; GET / HTTP/1.1
+&gt; User-Agent: curl/7.29.0
+&gt; Host: t.tt
+&gt; Accept: */*
+&gt; 
+&lt; HTTP/1.1 301 Moved Permanently
+&lt; Date: Tue, 28 Aug 2018 01:03:45 GMT
+&lt; Content-Type: text/html
+&lt; Content-Length: 178
+&lt; Connection: keep-alive
+&lt; Location: https://www.smartisan.com
+&lt; Server: ARTWS/1.0
+&lt; X-XSS-Protection: 1;mode=block
+&lt; 
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+* Connection #0 to host t.tt left intact
+</code></pre>
+
+<p><code>curl -L t.tt</code> (这是锤子的官网，会跳转header中的Location:www.smartisan.com)
+以上三种方法(&ldquo;&gt;&rdquo;|&ldquo;-o&rdquo;|&ldquo;-O&rdquo;)可以把url地址的结果写入文件中用法可以很方便的用来下载文件。当然，类似的还有<code>wget</code>。
+更多的用法如果可以的话，可以直接<code>man curl</code>或者<code>curl --help</code>；其实学linux 就是看manu。
+然后可以看一下基础的练习:<a href="https://www.thegeekstuff.com/2012/04/curl-examples/?utm_source=feedburner">15 example</a></p>
+
+<h2 id="share">Share</h2>
+
+<p><a href="https://programmingisterrible.com/post/176657481103/repeat-yourself-do-more-than-one-thing-and">Repeat yourself, do more than one thing, and rewrite everything</a><br />
+在[程序员的修炼之道]()一书中有提到，Do Not Repeat Yourself,本文有另一个角度的观点，可以一看。</p>
+
+                <hr>
+                
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="http://ericjin.com/arts/arts-week3/" data-toggle="tooltip" data-placement="top"
+                            title="ARTS-WEEK 3">&larr; ARTS-WEEK 3</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="http://ericjin.com/arts/arts-week5/" data-toggle="tooltip" data-placement="top"
+                            title="ARTS-WEEK 5">ARTS-WEEK 5 &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+
+
+
+
+
+<div class="post bg-white">
+  <script src="https://utteranc.es/client.js" repo="ericjin07.github.io"
+    issue-term="pathname" theme="github-light" crossorigin="anonymous"
+    async>
+    </script>
+</div>
+
+
+
+            </div>
+
+            
+            
+
+<aside id="sidebar">
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#algorithm">Algorithm</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#solution">solution</a></li>
+<li><a href="#test">test</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#review">Review</a></li>
+<li><a href="#tip">Tip</a></li>
+<li><a href="#share">Share</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</aside>
+
+
+        </div>
+    </div>
+</article>
+
+    
+
+    
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+            
+            <li>
+                <a target="_blank" href="https://twitter.com/ericjin07">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+            
+            
+            <li>
+                <a target="_blank" href="https://www.zhihu.com/people/jin-zhi-bin">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa  fa-stack-1x fa-inverse">知</i>
+                    </span>
+                </a>
+            </li>
+            
+            
+            
+            
+            <li>
+                <a target="_blank" href="https://github.com/ericjin07">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+            
+            
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Eric Jin 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="blank">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px"
+                        height="20px" src="https://ghbtns.com/github-btn.html?user=ericjin07&amp;repo=hexo-blog-sources&amp;type=star&amp;count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+    
+    (function () {
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [['$', '$']],
+            processEscapes: true
+        }
+    };
+</script>
+<script type="text/javascript" src="/js/prism.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js" async></script>
+<script type="text/javascript" src="/js/toc.js" async></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.nav.js"></script>
+<script type="text/javascript" src="/js/jquery.tagcloud.js"></script>
+<script type="text/javascript" src="/js/hux-blog.min.js" async></script>
+
+
+
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+
+
+<script>
+    
+    if ($('#tag_cloud').length !== 0) {
+        function load_tag() {
+            $.fn.tagcloud.defaults = {
+                
+                color: { start: '#bbbbee', end: '#0085a1' },
+            };
+            $('#tag_cloud a').tagcloud();
+        }
+        load_tag()
+    }
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on Eric Jin</title>
+    <link>http://ericjin.com/tags/java/</link>
+    <description>Recent content in java on Eric Jin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://ericjin.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>异常丢失</title>
+      <link>http://ericjin.com/tij%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
+      <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tij%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
+      <description>Error handing with Exceptions  java 中的异常处理有两种情况会使异常丢失
+1. try-finnaly 使用
+ public class LostMessage { public static void main(String[] args) { try { LostMessage lm = new LostMessage(); try { lm.f(); //ImportantException被抛出，直接进入finally } finally { lm.dispose(); //finally 中抛出HohunException,ImportantException 异常信息会丢失 } } catch (Exception e) { e.printStackTrace(); } } void f() throws ImportantException { throw new ImportantException(); } void dispose() throws HohunException { throw new HohunException(); } }  try 后面直接跟 finally,如果 finally 中抛出另一个异常，try 中抛出的异常就丢失了。</description>
+    </item>
+    
+  </channel>
+</rss>

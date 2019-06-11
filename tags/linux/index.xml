@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Eric Jin</title>
+    <link>http://ericjin.com/tags/linux/</link>
+    <description>Recent content in Linux on Eric Jin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Mar 2019 16:07:56 +0000</lastBuildDate>
+    
+	<atom:link href="http://ericjin.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>change /home to another partition</title>
+      <link>http://ericjin.com/change-home-to-another-partition/</link>
+      <pubDate>Thu, 28 Mar 2019 16:07:56 +0000</pubDate>
+      
+      <guid>http://ericjin.com/change-home-to-another-partition/</guid>
+      <description>记一次在 ubuntu 重新挂载 /home 到另外的分区的经历（/home 目录下已经存在文件）。
+  查看/home 目录的挂载情况
+$ df .   当然，现在已经是挂载在了另外一个分区下面了，之前我的/home 是挂载在根目录下&amp;rsquo;\&amp;lsquo;。
+ 之后是建立分区
+$ sudo fdisk /dev/sdb Welcome to fdisk (util-linux 2.31.1). Changes will remain in memory only, until you decide to write them. Be careful before using the write command. Command (m for help): m ## 可以列出所有的帮助选项  Generic ... F list free unpartitioned space l list known partition types n add a new partition ## 建立一个新的分区 p print the partition table .</description>
+    </item>
+    
+  </channel>
+</rss>

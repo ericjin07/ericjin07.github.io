@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ARTS-WEEK 2 | Eric Jin</title>
+    <meta property="og:title" content="ARTS-WEEK 2 - Eric Jin">
+    <meta property="og:type" content="article">
+    
+    <meta property="article:published_time" content="2018-08-11T00:00:00&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content="2018-08-11T00:00:00&#43;08:00">
+    
+    <meta name="Keywords" content="golang,go语言,go语言笔记,Eric Jin,java,博客,项目管理,python,软件架构,">
+    <meta name="description" content="ARTS-WEEK 2">
+    <meta name="author" content="Eric Jin">
+    
+    <meta property="og:url" content="http://ericjin.com/arts/arts-week2/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    <link rel="stylesheet" href="/css/reward.css">
+    <link rel="stylesheet" href="/css/prism.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+    <link rel="stylesheet" href="/css/widget.css">
+    <link rel="stylesheet" href="/css/rocket.css">
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    
+
+
+    
+    
+</head>
+
+<body>
+    
+
+
+
+    
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('http://ericjin.com/img/post-bg-debug.png')
+    }
+</style>
+<header class="intro-header">
+    
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        
+                        <div class="tags">
+                            
+                            <a href="http://ericjin.com/tags/arts">ARTS</a>
+                            
+                        </div>
+                        
+                        <h1>ARTS-WEEK 2</h1>
+                        
+                        <span class="meta">
+                            Posted by Eric Jin on
+                            2018-08-08
+                        </span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://ericjin.com/">Eric Jin</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="http://ericjin.com/">Home</a>
+                    </li>
+
+                    
+                    <li>
+                        <a href="http://ericjin.com/archives/" title="ARCHIVES">ARCHIVES</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/tags/" title="TAGS">TAGS</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/categories/" title="CATEGORIES">CATEGORIES</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/about/" title="ABOUT">ABOUT</a>
+                    </li>
+                    
+
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            
+            $navbar.className = " ";
+            
+            setTimeout(function () {
+                
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        } else {
+            
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    
+    
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                    col-lg-8 col-lg-offset-2
+                    col-md-10 col-md-offset-1
+                    post-container">
+                
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>LeeCode 的<a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/description/">第三题</a>，中等难度。</p>
+
+<pre><code>Given a string, find the length of the longest substring without repeating characters.
+
+Examples:
+
+Given &quot;abcabcbb&quot;, the answer is &quot;abc&quot;, which the length is 3.
+
+Given &quot;bbbbb&quot;, the answer is &quot;b&quot;, with the length of 1.
+
+Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.
+</code></pre>
+
+<p>此题寻找字符串中最长的不重复字符子串。<br />
+起始思路是找每一个子串，然后每个子串没有重复字符。这个思路确实是最直接，最暴力的，但是也是最没有算法和数据结构的。</p>
+
+<h5 id="solution">solution</h5>
+
+<pre><code class="language-java">    public int lengthOfLongestSubstring(String s) {
+        int max = 0;
+        for (int i = 0; i &lt; s.length() - 1; i++) {
+            for(int j = i+ 1; j&lt;s.length(); j++ ) {
+                if(allUnique(s,i,j)) max = Math.max(max,j-i);
+            }
+        }
+        return max;
+    }
+
+    private boolean allUnique(String s, int i, int j) {
+        Set&lt;Character&gt; set = new HashSet&lt;&gt;();
+        for (int k=i;k&lt;j;k++){
+            if (set.contains(s.charAt(k))) return false;
+            set.add(s.charAt(k));
+        }
+        return true;
+    }
+
+</code></pre>
+
+<h5 id="test">test</h5>
+
+<pre><code class="language-java">@Test
+    public void lengthOfLongestSubstring() {
+        LongestSubstring ls = new LongestSubstring();
+        String s = &quot;abcabcbb&quot;;
+        String s1 = &quot;bbbbb&quot;;
+        String s2 = &quot;pwwkew&quot;;
+
+        assertEquals(3,ls.lengthOfLongestSubstring(s));
+        assertEquals(1,ls.lengthOfLongestSubstring(s1));
+        assertEquals(3,ls.lengthOfLongestSubstring(s2));
+    }
+</code></pre>
+
+<p>思路简单粗暴，时间复杂度自然也就是最差的，三个循环 $O(n^3)$。</p>
+
+<p>之后在官方的solution和discuss中找到了一点提示，用两个指针和<code>hash map</code>，记录着不重复的最长子串。右指针扫过整个字符串，找到有相同的字符，左指针滑到右指针位置。leetcode 把这个称之为<code>slide window</code>。</p>
+
+<h5 id="solution-1">solution</h5>
+
+<pre><code class="language-java">/**
+     * create a hash map to maintain the character and integer
+     * use two pointer to define the max substring.
+     * right to scan the whole string,if there contains the character,
+     * move the left pointer to the right pointer.
+     * and the same way,compare the max substring's length
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstringUsingSlideWindow(String s) {
+        Map&lt;Character,Integer&gt; map = new HashMap&lt;&gt;();
+        int max = 0;
+        for (int i = 0 , j = 0; i &lt; s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                j = Math.max(j, map.get(s.charAt(i)));
+            }
+            max = Math.max(max, i - j + 1);
+            map.put(s.charAt(i), i + 1);
+        }
+        return max;
+    }
+</code></pre>
+
+<p>这个的时间复杂度就下来了，$O(n)$</p>
+
+<h2 id="review">Review</h2>
+
+<p>这周看到的这篇文章比较印象深刻，<a href="https://medium.com/outco/reversing-a-linked-list-easy-as-1-2-3-560fbffe2088">Reversing a Linked List: Easy as 1, 2, 3</a><br />
+This article talk about how to reverse a Linked List,it says that the common way to reverse it is to swap the head and the tail,util the two point meet at the middle, but this situation only happen when the linked List is a double linked list. When you only have a single reference,you can&rsquo;t use this way.<br />
+The second is to dump it into another data structure,like array. But when there are many nodes of the linked list,it would take lots of RAM.<br />
+所以这个文章的中心思想就是，三个指针，<code>current</code>、<code>previous</code>、<code>following</code>. 用三个指针来记录。</p>
+
+<blockquote>
+<ol>
+<li>Set following equal to following.next<br /></li>
+<li>Set current.next equal to previous<br /></li>
+<li>Set previous equal to current<br /></li>
+<li>Set current equal to following</li>
+</ol>
+</blockquote>
+
+<pre><code class="language-javascript">function reverse(head) {
+// Step 1
+  let previous = null
+  let current = head
+  let following = head
+// Step 2
+  while(current !== null) {
+    following = following.next
+    current.next = previous
+    previous = current          
+    current = following
+  }
+// Step 3  
+  return previous
+}
+</code></pre>
+
+<h2 id="tip">Tip</h2>
+
+<p>这周看了Spring MVC官方文档里面的<code>Bean Scope</code>.
+Spring 中默认的Scope是<code>singleton</code>，也就是整个Spring的IoC 容器里面只有一个对象。而我们在web 应用中，常常会需要跟<code>request</code>、<code>session</code>、<code>application</code>相关的对象，比如每个用户的登陆请求，用户的账户信息，网站的相关信息，这些就不能用单例对象来进行了。
+实现 scope 的配置也很简单，两种，一种 XML 的，一种<code>annotation</code>的。现在用应该用<code>annotation</code>的会比较多一些。<br />
+首先要想明白，如果那个 bean 不是<code>singleton</code>，这个时候，我们常常会把非单例的bean 注入到单例对象中去，这个时候，因为单例对象之后再容器中初始化一次，你注入的非单例的，也就只会是最开始注入的哪一个。所以，在 XML 配置的时候，需要开启代理。注入的时候注入这个 bean 的代理，然后每次请求的时候，会找代理，而代理会找到委托的那个真实的bean。</p>
+
+<pre><code class="language-xml">&lt;bean id=&quot;userPreferences&quot; class=&quot;com.foo.UserPreferences&quot; scope=&quot;session&quot;&gt;
+    &lt;aop:scoped-proxy/&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;userManager&quot; class=&quot;com.foo.UserManager&quot;&gt;
+    &lt;property name=&quot;userPreferences&quot; ref=&quot;userPreferences&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+
+<p>要注意<code>&lt;aop:scoped-proxy/&gt;</code>，如果不使用代理，<code>userManager</code> bean 中注入的<code>userPreferences</code> bean 就会使最开始初始化的那个。<br />
+<strong>annotation</strong>
+如果使用<code>annotation</code>的话，它默认就是开启了代理的，所以只需要直接使用<code>@RequestScope</code>,<code>@SessionScope</code>,<code>@ApplicationScope</code>就可以了。</p>
+
+<h2 id="share">Share</h2>
+
+<p>This Week,Share a article about data structure:
+<a href="https://medium.freecodecamp.org/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3">The top data structures you should know for your next coding interview</a><br />
+&gt; Algorithms + Data Structures = Programs</p>
+
+<p>自己还买了<a href="https://book.douban.com/subject/19952400/">《算法（第4版）》</a>这本书，可惜还没看，英文版，板砖一块。跟最近看的<a href="https://book.douban.com/subject/2130190/">《Java编程思想 （第4版）》</a>一样的厚。入了耗子叔的坑，在专业的道路上渐行渐远！</p>
+
+                <hr>
+                
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="http://ericjin.com/arts/arts-week1/" data-toggle="tooltip" data-placement="top"
+                            title="ARTS-WEEK 1">&larr; ARTS-WEEK 1</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="http://ericjin.com/arts/arts-week3/" data-toggle="tooltip" data-placement="top"
+                            title="ARTS-WEEK 3">ARTS-WEEK 3 &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+
+
+
+
+
+<div class="post bg-white">
+  <script src="https://utteranc.es/client.js" repo="ericjin07.github.io"
+    issue-term="pathname" theme="github-light" crossorigin="anonymous"
+    async>
+    </script>
+</div>
+
+
+
+            </div>
+
+            
+            
+
+<aside id="sidebar">
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#algorithm">Algorithm</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#solution">solution</a></li>
+<li><a href="#test">test</a></li>
+<li><a href="#solution-1">solution</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#review">Review</a></li>
+<li><a href="#tip">Tip</a></li>
+<li><a href="#share">Share</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</aside>
+
+
+        </div>
+    </div>
+</article>
+
+    
+
+    
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+            
+            <li>
+                <a target="_blank" href="https://twitter.com/ericjin07">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+            
+            
+            <li>
+                <a target="_blank" href="https://www.zhihu.com/people/jin-zhi-bin">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa  fa-stack-1x fa-inverse">知</i>
+                    </span>
+                </a>
+            </li>
+            
+            
+            
+            
+            <li>
+                <a target="_blank" href="https://github.com/ericjin07">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+            
+            
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Eric Jin 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="blank">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px"
+                        height="20px" src="https://ghbtns.com/github-btn.html?user=ericjin07&amp;repo=hexo-blog-sources&amp;type=star&amp;count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+    
+    (function () {
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [['$', '$']],
+            processEscapes: true
+        }
+    };
+</script>
+<script type="text/javascript" src="/js/prism.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js" async></script>
+<script type="text/javascript" src="/js/toc.js" async></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.nav.js"></script>
+<script type="text/javascript" src="/js/jquery.tagcloud.js"></script>
+<script type="text/javascript" src="/js/hux-blog.min.js" async></script>
+
+
+
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+
+
+<script>
+    
+    if ($('#tag_cloud').length !== 0) {
+        function load_tag() {
+            $.fn.tagcloud.defaults = {
+                
+                color: { start: '#bbbbee', end: '#0085a1' },
+            };
+            $('#tag_cloud a').tagcloud();
+        }
+        load_tag()
+    }
+
+</script>
+
+</body>
+
+</html>

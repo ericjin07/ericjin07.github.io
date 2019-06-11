@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tag on Eric Jin</title>
+    <link>http://ericjin.com/categories/tag/</link>
+    <description>Recent content in tag on Eric Jin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://ericjin.com/categories/tag/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ARTS-WEEK 1</title>
+      <link>http://ericjin.com/arts/arts-week1/</link>
+      <pubDate>Thu, 09 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week1/</guid>
+      <description>Algorithm LeetCode 的第一题，比较简单。就是给一个数组，一个目标结果，返回数组中两个相加和为目标数的索引。
+Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].  因为没有做过算法题，所以刚开始的思路就是跟简单排序一样，拿出第一个数，然后轮询后面的数，并相加，看它们的和是否等于目标数，不等于就拿出第二个数往后，等于就返回索引。</description>
+    </item>
+    
+  </channel>
+</rss>

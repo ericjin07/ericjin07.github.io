@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ARTS on Eric Jin</title>
+    <link>http://ericjin.com/tags/arts/</link>
+    <description>Recent content in ARTS on Eric Jin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Apr 2019 12:16:10 +0800</lastBuildDate>
+    
+	<atom:link href="http://ericjin.com/tags/arts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ARTS-WEEK7</title>
+      <link>http://ericjin.com/arts/arts-week7/</link>
+      <pubDate>Thu, 04 Apr 2019 12:16:10 +0800</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week7/</guid>
+      <description>Algorithm Description Given a 2D integer matrix M representing the gray scale of an image, you need to design a smoother to make the gray scale of each cell becomes the average gray scale (rounding down) of all the 8 surrounding cells and itself. If a cell has less than 8 surrounding cells, then use as many as you can.
+Example 1:
+Input: [[1,1,1], [1,0,1], [1,1,1]] Output: [[0, 0, 0], [0, 0, 0], [0, 0, 0]] Explanation: For the point (0,0), (0,2), (2,0), (2,2): floor(3/4) = floor(0.</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK6</title>
+      <link>http://ericjin.com/arts/arts-week6/</link>
+      <pubDate>Wed, 13 Mar 2019 16:17:55 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week6/</guid>
+      <description>Algorithm Description Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too. You need to find the shortest such subarray and output its length. Example 1: Input: [2, 6, 4, 8, 10, 9, 15] Output: 5 Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK 5</title>
+      <link>http://ericjin.com/arts/arts-week5/</link>
+      <pubDate>Sat, 08 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week5/</guid>
+      <description>最近算法题倒是一天有写一道，不过总是无法抓住很好的review 和tip 来写,所以感觉写ARTS的时间总是耽搁又耽搁，比一起的间隔时间也长了好几天。
+ Algorithm LeetCode Count and Say,简单。 这题算是比较印象深刻的一题，最开始这一题的题目都没有看清楚，不知道这是什么意思。后面才明白，是后一个数去say 前一个数，得到后一个数之后继续。这样其实就可以算是一种递归了。因为我们知道了递归因子，和边界点。
+Description The count-and-say sequence is the sequence of integers with the first five terms as following:
+1. 1 2. 11 3. 21 4. 1211 5. 111221  1 is read off as &amp;quot;one 1&amp;quot; or 11. 11 is read off as &amp;quot;two 1s&amp;quot; or 21. 21 is read off as &amp;quot;one 2, then one 1&amp;quot; or 1211.</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK 4</title>
+      <link>http://ericjin.com/arts/arts-week4/</link>
+      <pubDate>Mon, 27 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week4/</guid>
+      <description>Algorithm LeetCode 第26题,简单。 最近一周没有太多时间写，还是自己的时间规划的不够好。要谨记于心。
+Description Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length. Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory. Example 1:
+Given nums = **[1,1,2]**, Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK 3</title>
+      <link>http://ericjin.com/arts/arts-week3/</link>
+      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week3/</guid>
+      <description>Algorithm Leetcode 第20题,简单。 决定先按照难易程度开始写leetcode,尽量能够每天或者两天写一道题目。一周记录一道题目到ARTS上面来。
+Given a string containing just the characters &#39;(&#39;, &#39;)&#39;, &#39;{&#39;, &#39;}&#39;, &#39;[&#39; and &#39;]&#39;, determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets. Open brackets must be closed in the correct order. Note that an empty string is also considered valid. Example 1: Input: &amp;quot;()&amp;quot; Output: true Example 2: Input: &amp;quot;()[]{}&amp;quot; Output: true Example 3: Input: &amp;quot;(]&amp;quot; Output: false Example 4: Input: &amp;quot;([)]&amp;quot; Output: false Example 5: Input: &amp;quot;{[]}&amp;quot; Output: true  这题在旁边的related Topics 上面显示的是String、stack，所以可以猜测到本题的思路应该是从stack入手了。stack的特点是FILO(First in Last Out)，先进后出。</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK 2</title>
+      <link>http://ericjin.com/arts/arts-week2/</link>
+      <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week2/</guid>
+      <description>Algorithm LeeCode 的第三题，中等难度。
+Given a string, find the length of the longest substring without repeating characters. Examples: Given &amp;quot;abcabcbb&amp;quot;, the answer is &amp;quot;abc&amp;quot;, which the length is 3. Given &amp;quot;bbbbb&amp;quot;, the answer is &amp;quot;b&amp;quot;, with the length of 1. Given &amp;quot;pwwkew&amp;quot;, the answer is &amp;quot;wke&amp;quot;, with the length of 3. Note that the answer must be a substring, &amp;quot;pwke&amp;quot; is a subsequence and not a substring.  此题寻找字符串中最长的不重复字符子串。
+起始思路是找每一个子串，然后每个子串没有重复字符。这个思路确实是最直接，最暴力的，但是也是最没有算法和数据结构的。</description>
+    </item>
+    
+    <item>
+      <title>ARTS-WEEK 1</title>
+      <link>http://ericjin.com/arts/arts-week1/</link>
+      <pubDate>Thu, 09 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/arts/arts-week1/</guid>
+      <description>Algorithm LeetCode 的第一题，比较简单。就是给一个数组，一个目标结果，返回数组中两个相加和为目标数的索引。
+Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].  因为没有做过算法题，所以刚开始的思路就是跟简单排序一样，拿出第一个数，然后轮询后面的数，并相加，看它们的和是否等于目标数，不等于就拿出第二个数往后，等于就返回索引。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Eric Jin</title>
+    <link>http://ericjin.com/tags/</link>
+    <description>Recent content in Tags on Eric Jin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Apr 2019 12:16:10 +0800</lastBuildDate>
+    
+	<atom:link href="http://ericjin.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ARTS</title>
+      <link>http://ericjin.com/tags/arts/</link>
+      <pubDate>Thu, 04 Apr 2019 12:16:10 +0800</pubDate>
+      
+      <guid>http://ericjin.com/tags/arts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>http://ericjin.com/tags/linux/</link>
+      <pubDate>Thu, 28 Mar 2019 16:07:56 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>algorithm</title>
+      <link>http://ericjin.com/tags/algorithm/</link>
+      <pubDate>Mon, 18 Feb 2019 13:50:56 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>剑指offer</title>
+      <link>http://ericjin.com/tags/%E5%89%91%E6%8C%87offer/</link>
+      <pubDate>Mon, 18 Feb 2019 13:50:56 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tags/%E5%89%91%E6%8C%87offer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>book</title>
+      <link>http://ericjin.com/tags/book/</link>
+      <pubDate>Fri, 08 Feb 2019 15:17:29 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tags/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>http</title>
+      <link>http://ericjin.com/tags/http/</link>
+      <pubDate>Fri, 08 Feb 2019 15:17:29 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tags/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>杂谈</title>
+      <link>http://ericjin.com/tags/%E6%9D%82%E8%B0%88/</link>
+      <pubDate>Tue, 05 Feb 2019 00:02:56 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tags/%E6%9D%82%E8%B0%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VPS</title>
+      <link>http://ericjin.com/tags/vps/</link>
+      <pubDate>Thu, 31 Jan 2019 08:57:41 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tags/vps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>http://ericjin.com/tags/blog/</link>
+      <pubDate>Thu, 31 Jan 2019 08:57:41 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>http://ericjin.com/tags/java/</link>
+      <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tags/java/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>把blog部署VPS上的各种坑 | Eric Jin</title>
+    <meta property="og:title" content="把blog部署VPS上的各种坑 - Eric Jin">
+    <meta property="og:type" content="article">
+    
+    <meta property="article:published_time" content="2019-01-31T08:57:41&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content="2019-01-31T08:57:41&#43;08:00">
+    
+    <meta name="Keywords" content="golang,go语言,go语言笔记,Eric Jin,java,博客,项目管理,python,软件架构,">
+    <meta name="description" content="把blog部署VPS上的各种坑">
+    <meta name="author" content="Eric Jin">
+    
+    <meta property="og:url" content="http://ericjin.com/%E6%8A%8Ablog%E9%83%A8%E7%BD%B2%E5%88%B0vps%E4%B8%8A%E7%9A%84%E5%90%84%E7%A7%8D%E5%9D%91/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    <link rel="stylesheet" href="/css/reward.css">
+    <link rel="stylesheet" href="/css/prism.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+    <link rel="stylesheet" href="/css/widget.css">
+    <link rel="stylesheet" href="/css/rocket.css">
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    
+
+
+    
+    
+</head>
+
+<body>
+    
+
+
+
+    
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('http://ericjin.com/img/post-bg-digital-native.jpg')
+    }
+</style>
+<header class="intro-header">
+    
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        
+                        <div class="tags">
+                            
+                            <a href="http://ericjin.com/tags/blog">blog</a>
+                            
+                            <a href="http://ericjin.com/tags/vps">VPS</a>
+                            
+                        </div>
+                        
+                        <h1>把blog部署VPS上的各种坑</h1>
+                        
+                        <span class="meta">
+                            Posted by Eric Jin on
+                            2019-01-01
+                        </span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://ericjin.com/">Eric Jin</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="http://ericjin.com/">Home</a>
+                    </li>
+
+                    
+                    <li>
+                        <a href="http://ericjin.com/archives/" title="ARCHIVES">ARCHIVES</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/tags/" title="TAGS">TAGS</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/categories/" title="CATEGORIES">CATEGORIES</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://ericjin.com/about/" title="ABOUT">ABOUT</a>
+                    </li>
+                    
+
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            
+            $navbar.className = " ";
+            
+            setTimeout(function () {
+                
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        } else {
+            
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    
+    
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                    col-lg-8 col-lg-offset-2
+                    col-md-10 col-md-offset-1
+                    post-container">
+                
+
+<h2 id="缘起">缘起</h2>
+
+<p>最近刚好手上有 vps,本来 blog 是自己放在 <code>gitpage</code> 上的，用的是 <code>jekyll</code> ,不过 <code>jekyll</code> 不好再本机windows上安装，需要安装 <code>ruby</code> 的支持，而 <code>ruby</code> 在windows上又特别难弄。以前弄过一次，不过前段时间重装系统之后，就不想继续把 <code>ruby</code> 装到windows上，麻烦。<br />
+刚好了解到 <code>hexo</code> ,知道它只需要安装 <code>node.js</code>, 而 <code>node.js</code> 在windows上还是支持的特别好的，只需要在 <a href="https://nodejs.org/en/download/">node.js 官网</a> 下载安装包下载即可。</p>
+
+<p><code>hexo</code> 也有很好的中文支持，可以很顺利的在本机上安装好 <code>hexo</code>。</p>
+
+<h2 id="本机操作">本机操作</h2>
+
+<blockquote>
+<p>环境: windows 10 64位<br />
+需要安装: <a href="https://git-scm.com/">git</a>、<a href="https://nodejs.org/en/download/">node.js</a></p>
+</blockquote>
+
+<h3 id="1-使用npm安装hexo">1. 使用npm安装hexo</h3>
+
+<p>在本机执行：</p>
+
+<pre><code>npm install -g hexo-cli
+</code></pre>
+
+<h3 id="2-初始化-blog">2. 初始化 blog</h3>
+
+<pre><code>hexo init blog
+cd blog
+npm install
+</code></pre>
+
+<p>本例以<code>blog</code>为初始化的文件夹名。可自行定义。
+初始化以后，主要配置信息在 <code>_config.yml</code>里面，这个可以去<a href="https://hexo.io/docs/configuration">hexo</a> 进行详细了解。<br />
+现在来说本机操作已经完成了。让我们先在VPS上操作一番。</p>
+
+<h2 id="vps操作">VPS操作</h2>
+
+<blockquote>
+<p>假设你已经有了VPS服务器。我是买的 <a href="https://www.vultr.com/">vultr</a>，没有可以自己去购买一个。<br />
+国内：<a href="https://cn.aliyun.com/">阿里云</a>、<a href="https://cloud.tencent.com/">腾讯云</a>;国外：<a href="https://www.vultr.com/">vultr</a>、<a href="https://www.digitalocean.com/">digitalocean</a><br />
+环境：Ubuntu 18.10
+需要安装：<a href="https://git-scm.com/">git</a>、<a href="https://nginx.org/en/">nginx</a></p>
+
+<h3 id="git-安装-配置">git 安装、配置</h3>
+
+<ol>
+<li><p>安装</p>
+
+<pre><code>sudo apt-get install git
+</code></pre>
+
+<p>安装完成后查看：</p>
+
+<pre><code>git --version
+</code></pre>
+
+<p><img src="/img/post/git-version.png" alt="" /><br />
+查看到版本信息即说明安装成功。</p></li>
+</ol>
+</blockquote>
+
+<ol>
+<li><p>新加git 用户</p>
+
+<pre><code>adduser git
+</code></pre>
+
+<p>为git 用户添加sudo权限</p>
+
+<pre><code>gpasswd -a git sudo
+</code></pre></li>
+
+<li><p>配置<code>SSH</code>公钥，两种方法<br />
+第一种（<code>ssh-copy-id</code>）：</p>
+
+<pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub git@服务器ip地址
+</code></pre>
+
+<p>第二种（直接复制）：</p>
+
+<pre><code>cd /home/git                //切换到git用户目录
+mkdir .ssh              //创建.ssh目录
+cd .ssh
+vim authorized_keys
+</code></pre>
+
+<p>将本地(windows)上的 <code>C:/User/[username]/.ssh/id_rsa.pub</code> 里面的内容复制到 <code>authorized_keys</code> 里面。这样做是为了让每次你把本地的文件 <code>push</code> 到VPS上时，不用每次都输入密码。</p></li>
+
+<li><p>配置VPS 上的git 裸仓</p>
+
+<pre><code>cd /home/git 
+mkdir blog.git
+cd blog.git
+git init --bare   //使用--bare 为裸仓，不包含工作区。我们需要只是这个仓库的共享功能
+</code></pre>
+
+<p>然后创建VPS上需要发布的网站目录</p>
+
+<pre><code>cd /home/git
+mkdir www
+cd www
+mkdir blog
+</code></pre>
+
+<blockquote>
+<p>注： 4步骤中所有文件文件夹的用户组均要设为git用户</p>
+
+<pre><code>sudo chown git:git -R /home/git/www/blog
+sudo chown git:git -R /home/git/blog.git
+</code></pre>
+</blockquote></li>
+
+<li><p>配置hook，所谓的钩子。</p></li>
+</ol>
+
+<p>我们这里要使用的是 <code>post-receive</code> 的 hook，这个 hook 会在整个 git 操作过程完结以后被运行。</p>
+
+<pre><code>cd /home/git/blog.git/hook/
+vim post-receive
+</code></pre>
+
+<p>在 <code>post-receive</code> 文件中写入（两种方式）<br />
+第一种（会报）:</p>
+
+<pre><code>#!/bin/sh
+git --work-tree=/home/git/www/blog --git-dir=/home/git/blog.git checkout -f
+</code></pre>
+
+<p>第二种:</p>
+
+<pre><code>#!/bin/bash
+GIT_REPO=/home/git/blog.git
+TMP_GIT_CLONE=/tmp/blog
+PUBLIC_WWW=/home/git/www/blog 
+rm -rf ${TMP_GIT_CLONE}
+git clone $GIT_REPO $TMP_GIT_CLONE
+rm -rf ${PUBLIC_WWW}/*
+cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_WWW}
+</code></pre>
+
+<p>保存退出后，不要忘记附可执行权限：</p>
+
+<pre><code>chmod +x post-receive
+</code></pre>
+
+<ol>
+<li><p>关闭git 的shell 权限（自选）</p>
+
+<pre><code>vim /etc/passwd
+</code></pre>
+
+<p>将</p>
+
+<pre><code>git:x:1001:1001:,,,:/home/git:/bin/bash
+</code></pre>
+
+<p>更改为：</p>
+
+<pre><code>git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+</code></pre>
+
+<h3 id="nginx-安装-配置">nginx 安装、配置</h3>
+
+<p>安装 <code>nginx</code></p>
+
+<pre><code>apt-get install nginx
+</code></pre>
+
+<p>配置路径</p>
+
+<pre><code>cd /etc/nginx/sites-available              
+cp default default.bak                 
+vim default         
+</code></pre>
+
+<p>我的配置：</p>
+
+<pre><code>server {
+listen 80 default;              
+root /home/git/www/blog;            
+server_name _;     //你的域名，没有就不写，写_
+access_log  /home/git/log/nginx/blog_access.log;
+error_log   /home/git/log/nginx/blog_error.log;
+error_page 404 =  /404.html;
+
+location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ {
+    root /home/git/www/blog;
+    access_log   off;
+    expires      1d;
+}
+
+location ~* ^.+\.(css|js|txt|xml|swf|wav)$ {
+    root /home/git/www/blog;
+    access_log   off;
+    expires      10m;
+}
+
+location / {
+    root /home/git/www/blog;
+    if (-f $request_filename) {
+    rewrite ^/(.*)$  /$1 break;
+    }
+}
+
+location /nginx_status {
+    stub_status on;
+    access_log off;
+}
+}
+</code></pre></li>
+</ol>
+
+<p>保存后退出就好了。<br />
+然后重启 <code>nginx</code></p>
+
+<pre><code>systemctl restart nginx
+</code></pre>
+
+<p>查看 <code>nginx</code> 状态：</p>
+
+<pre><code>systemctl status nginx
+</code></pre>
+
+<h2 id="本地发布文章">本地发布文章</h2>
+
+<pre><code>hexo new &quot;hello,world&quot;
+</code></pre>
+
+<p>然后在 <code>source\_post</code> 下面就会生成<code>hello,world.md</code>的文件，之后编辑你的世界就可以了。<br />
+先在 <code>_config.yml</code>中写入要部署的路径</p>
+
+<pre><code>deploy:
+  type: git 
+  repo: git@ip:/home/git/blog.git  
+</code></pre>
+
+<p>然后生成静态页面并且提交到服务器</p>
+
+<pre><code>hexo g -d
+</code></pre>
+
+<p>更多的关于 hexo 的操作可以去<a href="https://hexo.io/docs">官网</a>看，有中文的文档。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>本次第一次操作，弄了很久，有大概一天，解决<code>ssh</code> 没办法生效，总是需要密码的问题，所以本文提供了两种方法。<br />
+还有就是nginx配置的时候，各种路径问题，这个需要自己慢慢校验！<br />
+最后还有就是本地使用 <code>hexo g -d</code> 部署的时候，服务器上的hook在两种方法中都遇到过问题，第一个采用 <code>bash</code> 命令的时候，总是 <code>permission deny</code>, 这个原因就是发布路径没有变成git 用户所有和权限。
+第二个是采用 <code>git checkout</code> 命令时，总是没有<code>work tree</code>,无法操作。这个还需要研究一下。</p>
+
+<h4 id="update-2019-01-31-2-26-pm">update 2019-01-31 2:26 pm</h4>
+
+<p>刚刚想复现一下 <code>git check</code> 这个问题，靠靠靠，居然好了。。我迷了。。。
+这样就不用每次都clone 到临时文件夹，然后删除发布路径的东西以后，再把临时文件夹的东西 copy 进去。这样感觉太没效率了。</p>
+
+                <hr>
+                
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="http://ericjin.com/tij%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" data-toggle="tooltip" data-placement="top"
+                            title="异常丢失">&larr; 异常丢失</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="http://ericjin.com/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/" data-toggle="tooltip" data-placement="top"
+                            title="新年快乐">新年快乐 &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+
+
+
+
+
+<div class="post bg-white">
+  <script src="https://utteranc.es/client.js" repo="ericjin07.github.io"
+    issue-term="pathname" theme="github-light" crossorigin="anonymous"
+    async>
+    </script>
+</div>
+
+
+
+            </div>
+
+            
+            
+
+<aside id="sidebar">
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#缘起">缘起</a></li>
+<li><a href="#本机操作">本机操作</a>
+<ul>
+<li><a href="#1-使用npm安装hexo">1. 使用npm安装hexo</a></li>
+<li><a href="#2-初始化-blog">2. 初始化 blog</a></li>
+</ul></li>
+<li><a href="#vps操作">VPS操作</a>
+<ul>
+<li><a href="#git-安装-配置">git 安装、配置</a></li>
+<li><a href="#nginx-安装-配置">nginx 安装、配置</a></li>
+</ul></li>
+<li><a href="#本地发布文章">本地发布文章</a></li>
+<li><a href="#总结">总结</a>
+<ul>
+<li>
+<ul>
+<li><a href="#update-2019-01-31-2-26-pm">update 2019-01-31 2:26 pm</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</aside>
+
+
+        </div>
+    </div>
+</article>
+
+    
+
+    
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+            
+            <li>
+                <a target="_blank" href="https://twitter.com/ericjin07">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+            
+            
+            <li>
+                <a target="_blank" href="https://www.zhihu.com/people/jin-zhi-bin">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa  fa-stack-1x fa-inverse">知</i>
+                    </span>
+                </a>
+            </li>
+            
+            
+            
+            
+            <li>
+                <a target="_blank" href="https://github.com/ericjin07">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+            
+            
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Eric Jin 2019
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="blank">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px"
+                        height="20px" src="https://ghbtns.com/github-btn.html?user=ericjin07&amp;repo=hexo-blog-sources&amp;type=star&amp;count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+    
+    (function () {
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [['$', '$']],
+            processEscapes: true
+        }
+    };
+</script>
+<script type="text/javascript" src="/js/prism.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js" async></script>
+<script type="text/javascript" src="/js/toc.js" async></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.nav.js"></script>
+<script type="text/javascript" src="/js/jquery.tagcloud.js"></script>
+<script type="text/javascript" src="/js/hux-blog.min.js" async></script>
+
+
+
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+
+
+<script>
+    
+    if ($('#tag_cloud').length !== 0) {
+        function load_tag() {
+            $.fn.tagcloud.defaults = {
+                
+                color: { start: '#bbbbee', end: '#0085a1' },
+            };
+            $('#tag_cloud a').tagcloud();
+        }
+        load_tag()
+    }
+
+</script>
+
+</body>
+
+</html>

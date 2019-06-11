@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>剑指offer on Eric Jin</title>
+    <link>http://ericjin.com/tags/%E5%89%91%E6%8C%87offer/</link>
+    <description>Recent content in 剑指offer on Eric Jin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Feb 2019 13:50:56 +0000</lastBuildDate>
+    
+	<atom:link href="http://ericjin.com/tags/%E5%89%91%E6%8C%87offer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>剑指offer_面试题6</title>
+      <link>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%986/</link>
+      <pubDate>Mon, 18 Feb 2019 13:50:56 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%986/</guid>
+      <description>面试题6: 从尾到头打印链表  输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。
+ 第一种 链表反转
+//我们把链反转 public ArrayList&amp;lt;Integer&amp;gt; reverseList(ListNode head) { ArrayList&amp;lt;Integer&amp;gt; revList = new ArrayList&amp;lt;&amp;gt;(); if (head == null ) return revList; if (head.next == null) { revList.add(head.val); return revList; } ListNode prev = head; ListNode curr = head.next; ListNode next ; while (curr != null) { next = curr.next; curr.next = prev; prev = curr; curr = next; } head.next = null; head = prev; ListNode temp = head; while (temp !</description>
+    </item>
+    
+    <item>
+      <title>剑指offer_面试题4</title>
+      <link>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%984/</link>
+      <pubDate>Thu, 14 Feb 2019 17:51:53 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%984/</guid>
+      <description>面试题4: 二维数组中的查找  在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
+ 方法一 暴力解法，循环两层数组 时间复杂度： O(n^2)
+//方法1：遍历，这是最简单的最暴力的方法了 public boolean find(int target, int [][] array) { int xlen = array[0].length; int ylen = array.length; for (int i = 0; i &amp;lt; ylen; i++) { for (int j = 0; j &amp;lt; xlen; j++) { if (array[i][j] == target) return true; } } return false; }  方法二
+时间复杂度：最多就是遍历完行，遍历完列最后查找到或没找到，就是行与列的和，也就是： O(n)
+//思路2：选取右上角的一点进行查询，如果所选数比目标数大，则不在所选数的列，小，不在所选数的行 // 一步步的缩小范围 public boolean find_2(int target, int [][] array) { int xlen = array[0].</description>
+    </item>
+    
+    <item>
+      <title>剑指offer_面试题3</title>
+      <link>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%983/</link>
+      <pubDate>Wed, 13 Feb 2019 10:23:53 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E5%89%91%E6%8C%87offer/%E9%9D%A2%E8%AF%95%E9%A2%983/</guid>
+      <description>面试题3_第一题: 找出数组中重复的数字  在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。
+ 三种方法解答：
+public class DuplicateInArray { // 思路1：排序，排序后查找数组中是否重复很简单了。 // 时间复杂度时nlog(n) public static int solution(int[] nums) { if (nums == null || nums.length == 0) return -1; int len = nums.length; for (int i = 0; i &amp;lt; len; i++) { if (nums[i] &amp;lt; 0 || nums[i] &amp;gt; len - 1) return -1; } Arrays.sort(nums); for (int i=0; i &amp;lt; len - 1; i++) { if (nums[i] == nums[i+1]) return nums[i]; } return -1; } // 思路2：利用哈希表，加入时看是否存在，存在则返回 // 时间复杂度时 n ,空间复杂度是 n public static int solution2(int[] nums) { HashSet&amp;lt;Integer&amp;gt; set = new HashSet&amp;lt;&amp;gt;(); for (int num : nums) { if (!</description>
+    </item>
+    
+  </channel>
+</rss>

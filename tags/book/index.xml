@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>book on Eric Jin</title>
+    <link>http://ericjin.com/tags/book/</link>
+    <description>Recent content in book on Eric Jin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Feb 2019 15:17:29 +0000</lastBuildDate>
+    
+	<atom:link href="http://ericjin.com/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>《图解HTTP》读书笔记</title>
+      <link>http://ericjin.com/%E5%9B%BE%E8%A7%A3http%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 08 Feb 2019 15:17:29 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E5%9B%BE%E8%A7%A3http%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>《图解HTTP》读书笔记 一、Web及网络基础 1.1 HTTP的诞生 3项WWW的构建技术：
+ HTML(HyperText Markup Language，超文本标记语言) 作为页面的文本标记语言
+ HTTP(HyperText Transfer Protocol，超文本传输协议) 作为文档传递的协议
+ URL(Uniform Resource Locator，统一资源定位符) 作为文档所在地的地址
+  1.2 网络基础协议 TCP/IP 计算机与网络设备要相互通信，双方就必须基于相同的方法。
+1.2.1 TCP/IP的分层管理 TCP/IP 协议族按层次分别分为以下 4 层：应用层、传输层、网络层和数据链路层。
+ 好处：每层做着自己的事情，不需要弄清楚上下层是如何运转的（封装），某层需要改变也可以单独修改，只要按照各层之间的接口封装即可
+  应用层：决定了向用户提供应用服务时通信的活动。FTP（File Transfer Protocol，文件传输协议）和 DNS（Domain Name System，域名系统）服务就是其中两类。HTTP也是应用层的。 传输层：传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。有两个性质不同的协议：TCP 和 UDP。 网络层：用来处理在网络上流动的数据包。 链路层：用来处理连接网络的硬件部分。  发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层时会把对应的首部消去。这叫做封装。
+​ 1.3 与HTTP关系密切的协议：IP、TCP、DNS 1.3.1 负责传输的IP协议 IP协议处于网络层，作用是把各种数据包传送给对方。需要确定IP地址和MAC地址。
+IP地址指明了节点被分配到的地址，MAC地址指网卡的固定地址。IP地址可以和MAC地址配对。
+ARP协议：凭借MAC地址进行通信 IP通信依赖MAC地址，网络上，通信的双方要经过多台计算机和网络设备中转才能连接到对方。在中转时，会利用下一站中转设备的MAC地址来搜索下一个目标。这时，就用到了ARP协议——根据通信双方的IP地址就可以反查出对应的MAC地址。
+ 中转过程中，计算机和路由器等网络设备只能获取很粗略的传输路线，称为路由选择。
+ 1.3.2 确保可靠性的TCP协议 TCP处于传输层，提供可靠的字节流服务。
+ 字节流服务：为了方便传输，将大块数据分割成以报文段为单位的数据包进行管理。
+ TCP协议为了更容易传送大数据才把数据分割，而且TCP协议能够确认数据最终是否送达对方。
+确保数据能到达目标 TCP采用三次握手策略。TCP协议把数据送出去后，不会对传送后的情况置之不理，一定会向对方确认是否成功送达。握手过程中使用了TCP的标志：SYN和ACK。</description>
+    </item>
+    
+    <item>
+      <title>异常丢失</title>
+      <link>http://ericjin.com/tij%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
+      <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ericjin.com/tij%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
+      <description>Error handing with Exceptions  java 中的异常处理有两种情况会使异常丢失
+1. try-finnaly 使用
+ public class LostMessage { public static void main(String[] args) { try { LostMessage lm = new LostMessage(); try { lm.f(); //ImportantException被抛出，直接进入finally } finally { lm.dispose(); //finally 中抛出HohunException,ImportantException 异常信息会丢失 } } catch (Exception e) { e.printStackTrace(); } } void f() throws ImportantException { throw new ImportantException(); } void dispose() throws HohunException { throw new HohunException(); } }  try 后面直接跟 finally,如果 finally 中抛出另一个异常，try 中抛出的异常就丢失了。</description>
+    </item>
+    
+  </channel>
+</rss>

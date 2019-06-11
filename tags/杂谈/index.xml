@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>杂谈 on Eric Jin</title>
+    <link>http://ericjin.com/tags/%E6%9D%82%E8%B0%88/</link>
+    <description>Recent content in 杂谈 on Eric Jin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 Feb 2019 00:02:56 +0000</lastBuildDate>
+    
+	<atom:link href="http://ericjin.com/tags/%E6%9D%82%E8%B0%88/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>新年快乐</title>
+      <link>http://ericjin.com/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/</link>
+      <pubDate>Tue, 05 Feb 2019 00:02:56 +0000</pubDate>
+      
+      <guid>http://ericjin.com/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/</guid>
+      <description>新年快乐。
+小总结 去年工作之余补了自己 java方面的基础，看了《core java》。《Thingking in Java》看了大概一半。自己比较满足的是，读的都是英文版的，虽然读的有点慢。java 是安身立命之本，还要继续加强。java 方面的书单还有《Effective java》，以及并发的经典《java并发编程实战》，在之后还要更加深入理解java虚拟机，这方面就是《Java 性能权威指南》，在了解了并发以后，要了解一下如何优化 java 性能，然后是《深入理解Java虚拟机》。这几本书需要在后两年好好研读，毕竟 java 才是目前自己需要深入的语言。
+在这之余，今年还涉猎了python、C、golang,都读了一本入门的书籍，也是瞎学了一同，了解了一下。然后在自己的工作相关上，对 kafka有了一些了解，读了《redis in action》这本书，了解了一下redis。然后我们常用的spring,这个虽然专门根据耗子书的推荐，读了《spring 实战》和《spring boot 实战》。学习spring 必备的入门书了，然后就是它们的官方文档。spring 的一本《精通spring4.x》还未读。这都是日后需要读的。
+小展望 今年，开年希望能够找到一个更好的平台进入，更深入和全面的提升自己的技术，跟着耗子书的程序员练级攻略，慢慢看书。自己在基础方面还需要强化。后端的路，走的越久，要学的东西就越多啊。
+自己有时候还是有些急了，这里学一点那里学一点。其实更应该在自己专长上面不断下功夫，然后博一点就好了！
+也是新年唠叨几句。技术人，技术博客，还是要记录技术，记录成长。</description>
+    </item>
+    
+  </channel>
+</rss>
